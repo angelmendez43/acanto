@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="acanto.report_voucher">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="data_report_margin_top" t-value="12"/>
+                <t t-set="data_report_header_spacing" t-value="4"/>
+                <t t-set="o" t-value="o.with_context(lang=user.lang)"/>
+                <div class="article">
+                    <div class="page">
+                        <div style="position: absolute; top: 0; left: 0;">
+                            <img class="logo" t-att-src="image_data_uri(user.company_id.logo)" alt="Logo" style="width: 25%;"/>
+                        </div>
+                        <h2 style="text-align: center;">Voucher de pago</h2>
+                        <br/><br/><br/><br/><br/><br/>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="width: 50%;">
+                                    <h4 style="font-size: 1.5em;">Datos del pago</h4>
+                                </td>
+                                <td style="width: 50%; text-align: right;">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td style="text-align: left; padding-left: 160px;">
+                                                <strong>Fecha:</strong> <t t-esc="o.fecha"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left; padding-left: 160px;">
+                                                <strong>Voucher No:</strong> <t t-esc="o.voucher_no"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left; padding-left: 160px;">
+                                                <strong>Cantidad:</strong>
+                                                  <t t-esc="o.cantidad_cheque"  t-options='{"widget": "monetary", "display_currency": user.company_id.currency_id}'/>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Recibimos de:</strong> <t t-esc="o.recibimos_id.name"/>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>La cantidad de:</strong>
+                                      <t t-esc="a_letras(o.cantidad_pago)"/> 
+
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                     <strong>Factura:</strong> 
+                                              <t t-esc="o.factura"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                     <strong>Descripción:</strong> 
+                                     <span t-esc="o.descripcion"/>
+                                </td>
+                            </tr>                            
+                            <tr>
+                                <td style="height: 30px;"></td>
+                            </tr>
+                        </table>
+                        <hr style="border: 1.5px solid black;"/>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="width: 50%;">
+                                    <h4 style="font-size: 1.5em;">Datos del cheque</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 20px;"></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100%;">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td style="width: 50%;">
+                                                <strong>Banco:</strong> <t t-esc="o.banco_id.name"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 50%;">
+                                                <strong>Cuenta No:</strong> <t t-esc="o.banco_id.bank_account_id.acc_number"/>
+                                            </td>
+                                            <td style="width: 50%; padding-left: 160px;">
+                                                <strong>No:</strong> <t t-esc="o.cheque_no"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="height: 20px;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: auto%;">
+                                                <strong>A la orden de:</strong> <t t-esc="o.orden"/>
+                                            </td>
+                                            <td style="width: 50%; padding-left: 160px;">
+                                                <strong>Cantidad:</strong> <t t-esc="o.cantidad_cheque"  t-options='{"widget": "monetary", "display_currency": user.company_id.currency_id}'/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="width: 100%;">
+                                                <strong>La cantidad de:</strong> <t t-esc="a_letras(o.cantidad_cheque)"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="height: 30px;"></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <hr style="border: 1.5px solid black;"/>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="width: 33%; text-align: center;">
+                                    <strong>Elaborado por:</strong><span t-field="user.name"/>
+                                </td>
+                                <td style="width: 33%; text-align: center;">
+                                    <strong>Autorizado por:</strong> <t t-esc="o.autorizado"/>
+                                </td>
+                                <td style="width: 33%; text-align: center;">
+                                    <strong>Recibido por:</strong> <t t-esc="o.recibido"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

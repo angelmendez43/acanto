@@ -12,16 +12,24 @@
         </record>
 
         <record id="acanto_action_voucher_pago" model="ir.actions.report">
-                <field name="name">voucher de pago</field>
-                <field name="model">account.payment</field>
-                <field name="report_type">qweb-pdf</field>
-                <field name="report_name">acanto.metodo_pago_report</field>
-                <field name="report_file">acanto.metodo_pago_report</field>
-                <field name="binding_model_id" ref="account.model_account_payment"/>
-                <field name="binding_type">report</field>
+            <field name="name">voucher de pago</field>
+            <field name="model">account.payment</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">acanto.metodo_pago_report</field>
+            <field name="report_file">acanto.metodo_pago_report</field>
+            <field name="binding_model_id" ref="account.model_account_payment"/>
+            <field name="binding_type">report</field>
         </record>
 
-
+        <record id="acanto_action_voucher" model="ir.actions.report">
+            <field name="name">voucher de pago</field>
+            <field name="model">acanto.voucher</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">acanto.report_voucher</field>
+            <field name="report_file">acanto.report_voucher</field>
+            <field name="binding_model_id" ref="model_acanto_voucher"/>
+            <field name="binding_type">report</field>
+        </record>
 
     </data>
 </openerp>

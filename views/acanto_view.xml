@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+
+        <record id="view_acanto_voucher_tree" model="ir.ui.view">
+            <field name="name">acanto.voucher.tree</field>
+            <field name="model">acanto.voucher</field>
+            <field name="arch" type="xml">
+                <tree string="Voucher">
+                    <field name="recibimos_id"/>
+                    <field name="factura"/>
+                    <field name="descripcion"/>
+                    <field name="fecha"/>
+                    <field name="voucher_no"/>
+                    <field name="cantidad_pago"/>
+                    <field name="banco_id"/>
+                    <field name="orden"/>
+                    <field name="cheque_no"/>
+                    <field name="cantidad_cheque"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_acanto_voucher_form" model="ir.ui.view">
+            <field name="name">acanto.voucher.form</field>
+            <field name="model">acanto.voucher</field>
+            <field name="arch" type="xml">
+                <form string="Voucher">
+                    <sheet>
+                        <group>
+                            <field name="recibimos_id"/>
+                            <field name="factura"/>
+                            <field name="descripcion"/>
+                            <field name="fecha"/>
+                            <field name="voucher_no"/>
+                            <field name="cantidad_pago"/>
+                        </group>
+                        <group>
+                            <field name="banco_id"/>
+                            <field name="orden"/>
+                            <field name="cheque_no"/>
+                            <field name="cantidad_cheque"/>
+                        </group>
+                        <group>
+                            <field name="autorizado"/>
+                            <field name="recibido"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <record id="action_voucher" model="ir.actions.act_window">
+            <field name="name">Voucher</field>
+            <field name="res_model">acanto.voucher</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem id="acanto_voucher" name="Voucher" parent="account.menu_finance_payables" action="action_voucher" sequence="100"/>
+      
+    </data>
+</odoo>

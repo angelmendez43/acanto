@@ -13,6 +13,8 @@
     'depends': ['crm','base','account','infilefel','purchase','sale','sale_crm'],
     'data': [
         'views/account_move_views.xml',
+        'views/acanto_view.xml',
+        'report/report_voucher.xml',
         'security/security.xml',
         'views/crm_lead_views.xml',
         'views/purchase_order_views.xml',
@@ -23,6 +25,7 @@
         'views/sale_order_views.xml',
         'views/ir_actions_report_templates.xml',
         'views/report.xml',
+        'security/ir.model.access.csv'.
     ],
     'demo': [
     ],

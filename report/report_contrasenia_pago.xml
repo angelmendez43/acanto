@@ -155,7 +155,10 @@
               <div class="info1">
                 <span class="label"><strong>PROVEEDOR:</strong></span>
                 <span class="o" t-field="o.partner_id.name"/><br/>
-                <span class="label"><strong>DIRECCION:</strong></span> <span class="o" t-esc="o.partner_id.street"/> <span t-if="o.partner_id.street2" t-field="o.partner_id.street2"/><br/>
+                <span class="label"><strong>DIRECCION:</strong></span> <span class="o" t-esc="o.partner_id.street"/><br/>
+                <t t-if="o.partner_id.street2">
+                    <span t-if="o.partner_id.street2" t-field="o.partner_id.street2"/><br/>
+                </t>
                 <span class="label"><strong>CONDICIONES DE PAGO:</strong></span>
                 <t t-if="o.payment_term_id">
                   <span class="o" t-field="o.payment_term_id.name" /><span>  </span>
@@ -234,7 +237,10 @@
               <div class="info1">
                 <span class="label"><strong>PROVEEDOR:</strong></span>
                 <span class="o" t-field="o.partner_id.name"/><br/>
-                <span class="label"><strong>DIRECCION:</strong></span> <span class="o" t-esc="o.partner_id.street"/> <span t-if="o.partner_id.street2" t-field="o.partner_id.street2"/><br/>
+                <span class="label"><strong>DIRECCION:</strong></span> <span class="o" t-esc="o.partner_id.street"/> <br/>
+                <t t-if="o.partner_id.street2">
+                    <span t-if="o.partner_id.street2" t-field="o.partner_id.street2"/><br/>
+                </t>
                 <span class="label"><strong>CONDICIONES DE PAGO:</strong></span>
                 <t t-if="o.payment_term_id">
                   <span class="o" t-field="o.payment_term_id.name" /><span>  </span>
