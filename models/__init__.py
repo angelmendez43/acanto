@@ -8,3 +8,4 @@ from . import purchase_order
 from . import sale_order
 from . import res_company
 from . import acanto
+from . import sale_report
