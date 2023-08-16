@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api, _
 
 class AcantoVoucher(models.Model):
     _name = 'acanto.voucher'
