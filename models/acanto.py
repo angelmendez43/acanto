@@ -4,6 +4,9 @@ class AcantoVoucher(models.Model):
     _name = 'acanto.voucher'
     _description = 'Voucher'
 
+    name = fields.Char(
+    'Name', default=lambda self: _('New'),
+    copy=False, readonly=True)
     recibimos_id = fields.Many2one('res.partner',string="Recibimos de")
     factura = fields.Char(string='Factura')
     descripcion = fields.Char(string='Descripcion')
@@ -18,3 +21,9 @@ class AcantoVoucher(models.Model):
     elaborado = fields.Char(string='Elaborado por')
     autorizado = fields.Char(string='Autorizado por')
     recibido = fields.Char(string='Recibido por')
+
+    @api.model
+    def create(self, vals):
+        if vals.get('name', _('New')) == _('New'):
+            vals['name'] = self.env['ir.sequence'].next_by_code('acanto.voucher')
+        return super().create(vals)

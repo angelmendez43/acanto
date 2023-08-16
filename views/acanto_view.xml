@@ -6,6 +6,7 @@
             <field name="model">acanto.voucher</field>
             <field name="arch" type="xml">
                 <tree string="Voucher">
+                    <field name="name"/>
                     <field name="recibimos_id"/>
                     <field name="factura"/>
                     <field name="descripcion"/>
@@ -26,6 +27,12 @@
             <field name="arch" type="xml">
                 <form string="Voucher">
                     <sheet>
+                      <div class="oe_title">
+                          <label for="name" string="Voucher No."/>
+                          <h1>
+                              <field name="name"/>
+                          </h1>
+                      </div>
                         <group>
                             <field name="recibimos_id"/>
                             <field name="factura"/>
@@ -48,14 +55,14 @@
                 </form>
             </field>
         </record>
-      
+
         <record id="action_voucher" model="ir.actions.act_window">
             <field name="name">Voucher</field>
             <field name="res_model">acanto.voucher</field>
             <field name="view_mode">tree,form</field>
         </record>
-        
+
         <menuitem id="acanto_voucher" name="Voucher" parent="account.menu_finance_payables" action="action_voucher" sequence="100"/>
-      
+
     </data>
 </odoo>
