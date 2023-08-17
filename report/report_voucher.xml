@@ -27,7 +27,7 @@
                                         </tr>
                                         <tr>
                                             <td style="text-align: left; padding-left: 160px;">
-                                                <strong>Voucher No:</strong> <t t-esc="o.voucher_no"/>
+                                                <strong>Voucher No:</strong> <t t-esc="o.name"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -49,27 +49,46 @@
                             <tr>
                                 <td>
                                     <strong>La cantidad de:</strong>
-                                      <t t-esc="a_letras(o.cantidad_pago)"/> 
+                                      <t t-esc="a_letras(o.cantidad_pago)"/>
 
                                 </td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                     <strong>Factura:</strong> 
+                                     <strong>Factura:</strong>
                                               <t t-esc="o.factura"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                     <strong>Descripción:</strong> 
+                                     <strong>Descripción:</strong>
                                      <span t-esc="o.descripcion"/>
                                 </td>
-                            </tr>                            
+                            </tr>
                             <tr>
                                 <td style="height: 30px;"></td>
                             </tr>
                         </table>
+                        <div>
+                            <strong>Detalle</strong>
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Descripción</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                               <tbody>
+                                   <tr t-foreach="o.linea_ids" t-as="linea">
+
+                                       <td><span t-esc="linea.name"/></td>
+                                       <td><span t-esc="linea.total" t-options='{"widget": "monetary", "display_currency": user.company_id.currency_id}'/></td>
+
+                                   </tr>
+                               </tbody>
+                            </table>
+                        </div>                        
                         <hr style="border: 1.5px solid black;"/>
                         <table style="width: 100%;">
                             <tr>

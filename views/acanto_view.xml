@@ -11,7 +11,6 @@
                     <field name="factura"/>
                     <field name="descripcion"/>
                     <field name="fecha"/>
-                    <field name="voucher_no"/>
                     <field name="cantidad_pago"/>
                     <field name="banco_id"/>
                     <field name="orden"/>
@@ -38,7 +37,6 @@
                             <field name="factura"/>
                             <field name="descripcion"/>
                             <field name="fecha"/>
-                            <field name="voucher_no"/>
                             <field name="cantidad_pago"/>
                         </group>
                         <group>
@@ -51,6 +49,12 @@
                             <field name="autorizado"/>
                             <field name="recibido"/>
                         </group>
+                        <field name="linea_ids" nolabel="1">
+                            <tree string="Lineas" editable="bottom">
+                                <field name="name"/>
+                                <field name="total"/>
+                            </tree>
+                        </field>
                     </sheet>
                 </form>
             </field>
