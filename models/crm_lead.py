@@ -11,7 +11,15 @@ class CRMLead(models.Model):
     fecha_inicio = fields.Date(string='Fecha Inicio')
     fecha_final = fields.Date(string='Fecha Final')
     productos_vendidos_ids = fields.Many2many('account.move.line')
-
+    saldo = fields.Monetary('Saldo', compute= _calcular_saldo)
+    currency_id = fields.Many2one(related='company_id.currency_id', depends=["company_id"], store=True)
+    
+    @api.depends('partner_id')
+    def _compute_name(self):
+        for lead in self:
+            if not lead.name and lead.partner_id and lead.partner_id.name:
+                lead.name = lead.partner_id.name
+    
     @api.onchange('fecha_inicio', 'fecha_final')
     def onchange_fecha(self):
         if self.fecha_inicio and self.fecha_final:
