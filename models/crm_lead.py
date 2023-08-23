@@ -4,6 +4,14 @@ from odoo import fields, models, api
 class CRMLead(models.Model):
     _inherit = 'crm.lead'
 
+    def _calcular_saldo(self):
+        saldo = 0
+        if self.partner_id:
+            factura_ids = self.env['account.move'].search([('move_type','=','out_invoice'),('amount_residual','>',0),('partner_id','=', self.partner_id.id)])
+            for factura in factura_ids:
+                saldo += factura.amount_residual
+        self.saldo = saldo
+    
     plazo_pago = fields.Many2one(
         string='plazo de pago',
         related='partner_id.property_payment_term_id', readonly=True,
