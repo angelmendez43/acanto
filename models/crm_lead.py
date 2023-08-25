@@ -7,7 +7,7 @@ class CRMLead(models.Model):
     def _calcular_saldo(self):
         saldo = 0
         if self.partner_id:
-            factura_ids = self.env['account.move'].search([('move_type','=','out_invoice'),('amount_residual','>',0),('partner_id','=', self.partner_id.id)])
+            factura_ids = self.env['account.move'].search([('state','=', 'posted'),('move_type','=','out_invoice'),('amount_residual','>',0),('partner_id','=', self.partner_id.id)])
             for factura in factura_ids:
                 saldo += factura.amount_residual
         self.saldo = saldo
