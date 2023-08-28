@@ -33,7 +33,7 @@
                                         <tr>
                                             <td style="text-align: left; padding-left: 160px;">
                                                 <strong>Cantidad:</strong>
-                                                  <t t-esc="o.cantidad_cheque"  t-options='{"widget": "monetary", "display_currency": user.company_id.currency_id}'/>
+                                                  <t t-esc="o.cantidad_pago"  t-options='{"widget": "monetary", "display_currency": user.company_id.currency_id}'/>
 
                                             </td>
                                         </tr>
