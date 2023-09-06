@@ -21,6 +21,7 @@
         'report/report_contrasenia_pago.xml',
         'views/res_company_views.xml',
         'views/account_payment_views.xml',
+        'views/crm_stage_views.xml',
         'report/report_metodo_pago.xml',
         'views/sale_order_views.xml',
         'views/ir_actions_report_templates.xml',

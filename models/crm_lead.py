@@ -11,7 +11,7 @@ class CRMLead(models.Model):
             for factura in factura_ids:
                 saldo += factura.amount_residual
         self.saldo = saldo
-    
+
     plazo_pago = fields.Many2one(
         string='plazo de pago',
         related='partner_id.property_payment_term_id', readonly=True,
@@ -21,13 +21,18 @@ class CRMLead(models.Model):
     productos_vendidos_ids = fields.Many2many('account.move.line')
     saldo = fields.Monetary('Saldo', compute= _calcular_saldo)
     currency_id = fields.Many2one(related='company_id.currency_id', depends=["company_id"], store=True)
-    
+
     @api.depends('partner_id')
     def _compute_name(self):
         for lead in self:
             if not lead.name and lead.partner_id and lead.partner_id.name:
                 lead.name = lead.partner_id.name
-    
+
+    @api.onchange('stage_id')
+    def _onchange_estado_perdido(self):
+        if self.stage_id.esta_perdida:
+            self.action_set_lost(lost_reason=False)
+
     @api.onchange('fecha_inicio', 'fecha_final')
     def onchange_fecha(self):
         if self.fecha_inicio and self.fecha_final:
