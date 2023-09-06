@@ -44,10 +44,3 @@ class CRMLead(models.Model):
                 ('price_subtotal', '>', 0),
             ],order="date ASC")
             self.productos_vendidos_ids = [(6, 0, move_lines.ids)]
-
-    def action_set_lost(self, **additional_values):
-        """ Lost semantic: probability = 0 or active = False """
-        if additional_values:
-            self.write(dict(additional_values))
-        self.write({'stage_id': 7})
-        return True
